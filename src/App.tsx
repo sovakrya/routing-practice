@@ -1,4 +1,4 @@
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Menu from "./components/Menu";
 import ProductList from "./components/ProductsList";
 import Product from "./components/Product";
@@ -33,15 +33,15 @@ function App() {
       <LoginBtn onClick={() => setIsAuth(!isAuth)}>
         {isAuth ? "Logout" : "Login"}
       </LoginBtn>
-      <Switch>
-        <Route path="/" component={Home} exact />
-        <Route path="/products" component={ProductList} />
-        <Route path="/product/:id" component={Product} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<ProductList />} />
+        <Route path="/:id" element={<Product />} />
         <Route path="/authorized">
-          {isAuth ? <MemeCat /> : <Redirect to={"/"} />}
+          {isAuth ? <MemeCat /> : <Navigate replace to="/" />}
         </Route>
-        <Route component={NotFound} />
-      </Switch>
+        <Route element={<NotFound />} />
+      </Routes>
     </AppBox>
   );
 }

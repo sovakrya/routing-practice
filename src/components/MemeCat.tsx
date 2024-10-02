@@ -15,6 +15,7 @@ export default function MemeCat() {
         src="https://i.pinimg.com/originals/34/b7/76/34b776f91ce9762bb735e9128b75098d.jpg"
         height={500}
         width={500}
+        alt="картинка - поздравление"
       />
     </MemeCatBox>
   );
