@@ -36,10 +36,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductList />} />
-        <Route path="/:id" element={<Product />} />
-        <Route path="/authorized">
-          {isAuth ? <MemeCat /> : <Navigate replace to="/" />}
-        </Route>
+        <Route path="products/:id" element={<Product />} />
+        <Route
+          path="/authorized"
+          element={isAuth ? <MemeCat /> : <Navigate to="/" replace />}
+        />
         <Route element={<NotFound />} />
       </Routes>
     </AppBox>

@@ -26,7 +26,7 @@ export default function ProductList() {
   const navigate = useNavigate();
 
   function goToSlide(id: number) {
-    navigate(`/product/${id}`);
+    navigate(`/products/${id}`);
   }
 
   useMemo(() => {

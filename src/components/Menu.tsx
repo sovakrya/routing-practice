@@ -21,13 +21,13 @@ export default function Menu() {
   return (
     <HeaderBox>
       <NavBox>
-        <NavLink to="/" activeClassName="active" className="link" exact>
+        <NavLink to="/" end className="link">
           Главная
         </NavLink>
-        <NavLink to="/products" activeClassName="active" className="link" exact>
+        <NavLink to="/products" className="link">
           Список товаров
         </NavLink>
-        <NavLink to="/authorized" activeClassName="active" className="link">
+        <NavLink to="/authorized" className="link">
           Только для авторизованных пользователей
         </NavLink>
       </NavBox>
