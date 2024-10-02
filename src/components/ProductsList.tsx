@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { getProducts, ProductItem } from "../service/productsServ";
 import { useMemo, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const ProductsBox = styled.div`
   display: flex;
@@ -23,10 +23,10 @@ const ProductsWrapper = styled.div`
 export default function ProductList() {
   const [productItemList, setProductItemList] = useState<ProductItem[]>([]);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   function goToSlide(id: number) {
-    history.push(`/product/${id}`);
+    navigate(`/product/${id}`);
   }
 
   useMemo(() => {
