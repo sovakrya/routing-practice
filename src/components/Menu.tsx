@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import "./assets/styles/Menu.css";
+import { useState } from "react";
 
 const HeaderBox = styled.header`
   background-color: #9ba5dfac;
@@ -23,6 +24,8 @@ const LoginBtn = styled.button`
 `;
 
 export default function Menu() {
+  const [isLogged, setIsLogged] = useState(false);
+
   return (
     <HeaderBox>
       <NavBox>
@@ -34,7 +37,7 @@ export default function Menu() {
         </NavLink>
       </NavBox>
 
-      <LoginBtn>Login</LoginBtn>
+      <LoginBtn onClick={() => setIsLogged(true)}>Login</LoginBtn>
     </HeaderBox>
   );
 }
