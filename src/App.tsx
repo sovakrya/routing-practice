@@ -1,25 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Navigate, Route, Routes } from "react-router-dom";
+import Menu from "./components/Menu";
+import ProductList from "./components/ProductsList";
+import Product from "./components/Product";
+import MemeCat from "./components/MemeCat";
+import { useState } from "react";
+import styled from "styled-components";
+import Home from "./components/Home";
+import NotFound from "./components/NotFound";
+
+const LoginBtn = styled.button`
+  width: 70px;
+  height: 40px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-right: 8px;
+`;
+
+const AppBox = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 34px;
+  flex-direction: column;
+`;
 
 function App() {
+  const [isAuth, setIsAuth] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppBox>
+      <Menu />
+      <LoginBtn onClick={() => setIsAuth(!isAuth)}>
+        {isAuth ? "Logout" : "Login"}
+      </LoginBtn>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<ProductList />} />
+        <Route path="products/:id" element={<Product />} />
+        <Route
+          path="/authorized"
+          element={isAuth ? <MemeCat /> : <Navigate to="/" replace />}
+        />
+        <Route element={<NotFound />} />
+      </Routes>
+    </AppBox>
   );
 }
 
