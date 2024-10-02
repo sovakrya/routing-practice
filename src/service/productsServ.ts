@@ -10,6 +10,14 @@ export type ProductItem = {
   material: string;
 };
 
-export async function getProduct(id: number) {
-  return new Promise(() => {});
+export async function getProducts(): Promise<ProductItem[]> {
+  return new Promise((res) => {
+    res(products);
+  });
+}
+
+export async function getProduct(id: number): Promise<ProductItem> {
+  return new Promise((res) => {
+    res(products[id]);
+  });
 }
