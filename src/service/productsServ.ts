@@ -11,13 +11,14 @@ export type ProductItem = {
 };
 
 export async function getProducts(): Promise<ProductItem[]> {
-  return new Promise((res) => {
-    res(products);
-  });
+  return products;
 }
 
 export async function getProduct(id: number): Promise<ProductItem> {
-  return new Promise((res) => {
-    res(products[id]);
-  });
+  const productId = products.find((elem) => elem.id === id);
+  if (!productId) {
+    throw new Error("NO_ITEM");
+  }
+
+  return productId;
 }

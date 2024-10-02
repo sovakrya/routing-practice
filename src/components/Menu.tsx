@@ -29,11 +29,8 @@ export default function Menu() {
         <NavLink to="/" activeClassName="active" className="link" exact>
           Список товаров
         </NavLink>
-        <NavLink to="/product" activeClassName="active" className="link">
-          Товар
-        </NavLink>
         <NavLink to="/authorized" activeClassName="active" className="link">
-          Прикол
+          Только для авторизованных пользователей
         </NavLink>
       </NavBox>
 

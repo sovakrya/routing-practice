@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import products from "../products.json";
-import { ProductItem } from "../service/productsServ";
+import { getProducts, ProductItem } from "../service/productsServ";
+import { useEffect, useMemo, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const ProductsBox = styled.div`
   display: flex;
@@ -20,16 +21,30 @@ const ProductsWrapper = styled.div`
 `;
 
 export default function ProductList() {
-  const productItemList: ProductItem[] = products;
+  const [productItemList, setProductItemList] = useState<ProductItem[]>([]);
+
+  const history = useHistory();
+
+  function goToSlide(id: number) {
+    history.push(`/product/${id}`);
+  }
+
+  useMemo(() => {
+    getProducts().then((res) => setProductItemList([...res]));
+  }, []);
   return (
     <ProductsBox>
       {productItemList.map((productItem) => (
-        <ProductsWrapper key={productItem.id}>
+        <ProductsWrapper
+          key={productItem.id}
+          onClick={() => goToSlide(productItem.id)}
+        >
           <img
             src={productItem.img}
             height={350}
             width={350}
             alt="изображение товара"
+            style={{ objectFit: "cover" }}
           />
           <span>{productItem.name}</span>
           <span>{productItem.price} Р</span>

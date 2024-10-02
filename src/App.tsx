@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { Route, useParams } from "react-router-dom";
 import "./App.css";
 import Menu from "./components/Menu";
 import ProductList from "./components/ProductsList";
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Menu />
       <Route path="/" component={ProductList} exact />
-      <Route path="/blog" component={Product} />
+      <Route path="/product/:id" component={Product} />
       <Route path="/authorized" component={MemeCat} />
     </div>
   );
