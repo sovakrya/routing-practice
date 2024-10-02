@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { getProducts, ProductItem } from "../service/productsServ";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 const ProductsBox = styled.div`

@@ -54,7 +54,7 @@ export default function Product() {
         <span>Описание: {productItem?.description}</span>
         <span>Цвет: {productItem?.color}</span>
         <span>Материал: {productItem?.material}</span>
-        <span>Цена: {productItem?.price}</span>
+        <span>Цена: {productItem?.price} Р</span>
       </ProductContentBox>
     </ProductItemBox>
   );
